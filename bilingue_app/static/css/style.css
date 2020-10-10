@@ -14,6 +14,7 @@ body {
     font-family: sans-serif;
     font-size: 16px;
     background-color: #272727;
+    text-align: center;
 }
 nav {
     background: #272727;
@@ -91,27 +92,29 @@ p {
     flex-direction: column; */
     max-width: 80%;
     padding: 10px;
-    text-align: center;
+    
 }
 
-#addEng {
-    padding: 10px;
-    background-color: #02eef4;
-    color: #ffffff
-    max-width: 500px;
+.add{
+    padding: 10px 70px;
     border-radius: 8px;
-    margin: 10px;
 }
-#addSpan {
-    padding: 10px;
-    background-color: #5832fd;
-    color: #ffffff
-    max-width: 500px;
+/* #addSpan {
+    padding: 10px 70px;
+   
     border-radius: 8px;
-    margin: 10px;
-}
+    margin-top: 10px;
+} */
 
 /* Flip Card */
+.eng {
+    background-color: #02eef4;
+    color: #5832fd;
+}
+.span {
+    background-color: #5832fd;
+    color: #02eef4;
+}
 .card {
     background-color: #02eef4;
     width: 300px;
@@ -138,12 +141,12 @@ p {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
-.card-front{
+/* .card-front{
     background-color: #02eef4;
     color: white;
-}
+} */
 .card-back{
-    background-color: #5832fd;
-    color: #fff;
+    /* background-color: #5832fd;
+    color: #fff; */
     transform: rotateY(180deg);
 }
