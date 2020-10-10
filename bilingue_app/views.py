@@ -44,9 +44,9 @@ class PalabraCreate(LoginRequiredMixin, CreateView):
 
 @login_required
 def vocabulary_index(request):
-    words = Word.objects.filter(user=request.user)
-    palabras = Palabra.objects.filter(user=request.user)
-    return render(request, 'vocabulary/index.html', 
+    Word.objects.all()
+    Palabra.objects.all()
+    return render(request, 'vocabulary.html', 
         { 'palabras': palabras },
         { 'words': words }
         )

@@ -7,5 +7,5 @@ urlpatterns = [
     path('accounts/signup', views.signup, name='signup'),
     path('word/create/', views.WordCreate.as_view(), name='word_create'),
     path('palabra/create/', views.PalabraCreate.as_view(), name='palabra_create'),
-    path('vocabulary/index', views.vocabulary_index, name='index'),
+    path('vocabulary', views.vocabulary_index, name='vocabulary'),
 ]

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
+
+{% autoescape on %}
 
 {% for word in words %}
 <div class="card">
@@ -31,5 +32,7 @@
     </div>
 </div>
 {% endfor %}
+
+{% endautoescape %}
 
 {% endblock %}
