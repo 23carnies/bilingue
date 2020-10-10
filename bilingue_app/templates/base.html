@@ -9,17 +9,23 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <nav>
-        <ul class="menu">
-            <li class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt="logo" width="40px"></a></li>
-            <li class="item"><a href="/">bilingüe</a></li>
-            <li class="item"><a href="#">About</a></li>
-            <li class="item"><a href="#">Vocabulary</a></li>
-            <li class="item"><a href="#">Media</a></li>
-            <li class="item button"><a href="#">Log In</a></li>
-            <li class="item button secondary"><a href="#">Sign Up</a></li>
-        </ul>
-    </nav>
-
+    <header>
+        <nav>
+            <ul class="menu">
+                <li class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt="logo" width="40px"></a></li>
+                <li class="item"><a href="{% url 'home' %}">bilingüe</a></li>
+                <li class="item"><a href="{% url 'about' %}">About</a></li>
+                <li class="item"><a href="#">Vocabulary</a></li>
+                <li class="item"><a href="#">Media</a></li>
+                <li class="item button"><a href="#">Log In</a></li>
+                <li class="item button secondary"><a href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    
+    </main>
 </body>
 </html>

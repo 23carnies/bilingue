@@ -1,7 +1,14 @@
+@font-face{ 
+	font-family: 'Alice';
+	src: url('Alice-Regular-webfont.woff');
+	src: url('Alice-Regular-webfont.woff') format('woff');
+}
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Alice', Palatino, serif;
+    font-size: 18px;
 }
 body {
     font-family: sans-serif;
@@ -53,13 +60,33 @@ a {
     padding: 15px 5px;
 }
 
-.toggle {
-    /* order: 1; */
+/* .toggle {
+    order: 1;
     font-size: 20px;
-    color: #02eef4;
+    color: #02eef4;}
+.button.secondary { divider between buttons and menu links
+    border-bottom: 1px #444 solid;
+} */
+
+/* Main Page */
+h1 {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
 }
 
+p {
+    text-align: center;
+    padding: 5px;
+}
 
-.button.secondary { /* divider between buttons and menu links */
-    border-bottom: 1px #444 solid;
+.about {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+    max-width: 80%;
+    padding: 10px;
+    text-align: center;
 }
