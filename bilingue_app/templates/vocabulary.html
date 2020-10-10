@@ -1,20 +1,38 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
 
+{% autoescape on %}
+
+{% for word in words %}
 <div class="card">
     <div class="card-inner">
-        <div class="card-front">
-            <h4>English: {{ vocabulary.english }}</h4>
-            <p>Cognates: {{ vocabulary.cognates }}</p>
-            <p>Antonyms: {{ vocabulary.antonyms }}</p>
+        <div class="card-front eng">
+            <h4>English: {{ word.english }}</h4>
         </div>
-        <div class="card-back">
-            <h4>Spanish: {{ vocabulary.spanish }}</h4>
-            <p>Cognates: {{ vocabulary.cognates }}</p>
-            <p>Antonyms: {{ vocabulary.antonyms }}</p>
+        <div class="card-back span">
+            <h4>Spanish: {{ word.spanish }}</h4>
+            <p>Cognates: {{ word.cognates }}</p>
+            <p>Antonyms: {{ word.antonyms }}</p>
         </div>
     </div>
 </div>
+{% endfor %}
+
+{% for palabra in palabras %}
+<div class="card">
+    <div class="card-inner">
+        <div class="card-front span">
+            <h4>Español: {{ palabra.español }}</h4>
+        </div>
+        <div class="card-back eng">
+            <h4>Inglés: {{ palabra.inglés }}</h4>
+            <p>Cognadas: {{ palabra.cognadas }}</p>
+            <p>Antónimos: {{ palabra.antónimos }}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endautoescape %}
 
 {% endblock %}

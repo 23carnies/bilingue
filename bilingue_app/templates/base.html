@@ -13,13 +13,16 @@
     <header>
         <nav>
             <ul class="menu">
-                <li class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt="logo" width="40px"></a></li>
-                <li class="item"><a href="{% url 'home' %}">bilingüe</a></li>
+                <li class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo" width="40px"></a></li>
                 <li class="item"><a href="{% url 'about' %}">About</a></li>
-                <li class="item"><a href="#">Vocabulary</a></li>
+              {% if user.is_authenticated %}  
+                <li class="item"><a href="{% url 'vocabulary' %}">Vocabulary</a></li>
                 <li class="item"><a href="#">Media</a></li>
+                <li class="item"><a href="{% url 'logout' %}">Log Out</a></li>
+              {% else %}  
                 <li class="item button"><a href="{% url 'login' %}">Log In</a></li>
                 <li class="item button secondary"><a href="{% url 'signup' %}">Sign Up</a></li>
+              {% endif %}  
             </ul>
         </nav>
     </header>

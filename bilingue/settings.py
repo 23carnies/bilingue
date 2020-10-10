@@ -123,4 +123,4 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
 
-LOGOUT_REIDRECT_URL = '/'
+LOGOUT_REIDRECT_URL = '/about/'
