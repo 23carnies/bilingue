@@ -9,4 +9,5 @@ urlpatterns = [
     path('word/create/', views.WordCreate.as_view(), name='word_create'),
     path('palabra/create/', views.PalabraCreate.as_view(), name='palabra_create'),
     path('media/create/', views.MediaCreate.as_view(), name='media_create'),
+    path('media/', views.media_index, name='media_index')
 ]
