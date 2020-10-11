@@ -17,6 +17,7 @@
             <p>Antonyms: {{ word.antonyms }}</p>
           {% endif %}
           <a href="{% url 'words_update' word.id %}" class="btn span">Edit</a>
+          <a href="{% url 'words_delete' word.id %}" class="btn span">Delete</a>
         </div>
     </div>
 </div>
@@ -38,6 +39,7 @@
             <p>Antónimos: {{ palabra.antónimos }}</p>
           {% endif %}
           <a href="{% url 'palabras_update' palabra.id %}" class="btn eng">Edit</a>
+          <a href="{% url 'palabras_delete' palabra.id %}" class="btn eng">Delete</a>
         </div>
     </div>
 </div>

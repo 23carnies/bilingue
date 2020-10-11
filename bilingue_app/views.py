@@ -72,3 +72,11 @@ class PalabraUpdate(LoginRequiredMixin, UpdateView):
     model = Palabra
     fields = ['español', 'inglés', 'cognadas', 'antónimos']
     success_url = '/vocabulary/'
+
+class WordDelete(LoginRequiredMixin, DeleteView):
+    model = Word
+    success_url = '/vocabulary/'
+
+class PalabraDelete(LoginRequiredMixin, DeleteView):
+    model = Palabra
+    success_url = '/vocabulary/'
