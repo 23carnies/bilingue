@@ -73,6 +73,11 @@ class PalabraUpdate(LoginRequiredMixin, UpdateView):
     fields = ['español', 'inglés', 'cognadas', 'antónimos']
     success_url = '/vocabulary/'
 
+class MediaUpdate(LoginRequiredMixin, UpdateView):
+    model = Media
+    fields = ['name', 'year', 'picture', 'media_type']
+    success_url = '/media/'
+
 class WordDelete(LoginRequiredMixin, DeleteView):
     model = Word
     success_url = '/vocabulary/'
@@ -80,3 +85,7 @@ class WordDelete(LoginRequiredMixin, DeleteView):
 class PalabraDelete(LoginRequiredMixin, DeleteView):
     model = Palabra
     success_url = '/vocabulary/'
+
+class MediaDelete(LoginRequiredMixin, DeleteView):
+    model = Media
+    success_url = '/media/'
