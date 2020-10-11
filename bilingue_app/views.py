@@ -35,6 +35,11 @@ def vocabulary_index(request):
         { 'palabras': palabras, 'words': words }
     )
 
+@login_required
+def media_index(request):
+    medias = Media.objects.all()
+    return render(request, 'media.html', {'medias': medias})
+
 class WordCreate(LoginRequiredMixin, CreateView):
     model = Word
     fields = ['english', 'spanish', 'cognates', 'antonyms']

@@ -59,7 +59,7 @@ class Palabra(models.Model):
 
 class Media(models.Model):
     name = models.CharField(max_length=250)
-    year = models.IntegerField(blank=True)
+    year = models.IntegerField(blank=True, null=True)
     picture = models.CharField(
         max_length=200,
         blank=True
@@ -69,11 +69,10 @@ class Media(models.Model):
         choices=MEDIA_TYPES,
         default=MEDIA_TYPES[0][0]
     )
-    is_streaming = models.BooleanField(default=True)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return (self.name)
+        return f"{self.name} \n {self.get_media_type_display()}"
     def get_absolute_url(self):
         return reverse('media')
