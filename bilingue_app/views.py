@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import User, Word, Palabra
+from .models import User, Word, Palabra, Media
 
 # Create your views here.
 def home(request):
@@ -49,3 +49,9 @@ class PalabraCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class MediaCreate(LoginRequiredMixin, CreateView):
+    model = Media
+    fields = ['name', 'year', 'picture', 'media_type', 'is_streaming']
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
