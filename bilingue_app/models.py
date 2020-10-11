@@ -22,15 +22,15 @@ class Word(models.Model):
     spanish = models.CharField(
         max_length=100,
         blank=True
-        )
+    )
     cognates = models.CharField(
         max_length=200,
         blank=True
-        )
+    )
     antonyms = models.CharField(
         max_length=200,
         blank=True
-        )
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.english
@@ -42,15 +42,15 @@ class Palabra(models.Model):
     inglés = models.CharField(
         max_length=100,
         blank=True
-        )
+    )
     cognadas = models.CharField(
         max_length=200,
         blank=True
-        )
+    )
     antónimos = models.CharField(
         max_length=200,
         blank=True
-        )
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.español  
@@ -63,7 +63,7 @@ class Media(models.Model):
     picture = models.CharField(
         max_length=200,
         blank=True
-        )
+    )
     media_type = models.CharField(
         max_length=1,
         choices=MEDIA_TYPES,
@@ -76,3 +76,22 @@ class Media(models.Model):
         return f"{self.name} is a {self.get_media_type_display()}"
     def get_absolute_url(self):
         return reverse('media')
+
+class Chiste(models.Model):
+    título = models.CharField(max_length=100)
+    foto = models.CharField(
+        max_length=200,
+        blank=True
+    )
+    configuración = models.CharField(
+        max_length=500,
+        blank=True
+    )
+    remate = models.CharField(
+        max_length=200,
+        blank=True
+    )
+    def __str__(self):
+        return self.título  
+    def get_absolute_url(self):
+        return reverse('chistes')
