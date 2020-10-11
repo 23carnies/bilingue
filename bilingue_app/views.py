@@ -43,6 +43,7 @@ def media_index(request):
 class WordCreate(LoginRequiredMixin, CreateView):
     model = Word
     fields = ['english', 'spanish', 'cognates', 'antonyms']
+    success_url = '/vocabulary/'
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -50,6 +51,7 @@ class WordCreate(LoginRequiredMixin, CreateView):
 class PalabraCreate(LoginRequiredMixin, CreateView):
     model = Palabra
     fields = ['español', 'inglés', 'cognadas', 'antónimos']
+    success_url = '/vocabulary/'
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
@@ -60,3 +62,13 @@ class MediaCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+class WordUpdate(LoginRequiredMixin, UpdateView):
+    model = Word
+    fields = ['english', 'spanish', 'cognates', 'antonyms']
+    success_url = '/vocabulary/'
+
+class PalabraUpdate(LoginRequiredMixin, UpdateView):
+    model = Palabra
+    fields = ['español', 'inglés', 'cognadas', 'antónimos']
+    success_url = '/vocabulary/'

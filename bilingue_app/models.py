@@ -35,7 +35,7 @@ class Word(models.Model):
     def __str__(self):
         return self.english
     def get_absolute_url(self):
-        return reverse('vocabulary')
+        return reverse('word')
 
 class Palabra(models.Model):
     español = models.CharField(max_length=100)
@@ -55,7 +55,7 @@ class Palabra(models.Model):
     def __str__(self):
         return self.español  
     def get_absolute_url(self):
-        return reverse('vocabulary')
+        return reverse('palabra')
 
 class Media(models.Model):
     name = models.CharField(max_length=250)
@@ -73,6 +73,6 @@ class Media(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.name} \n {self.get_media_type_display()}"
+        return f"{self.name} is a {self.get_media_type_display()}"
     def get_absolute_url(self):
         return reverse('media')
