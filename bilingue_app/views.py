@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import User, Word, Palabra, Media
+from .models import User, Word, Palabra, Media, Chiste
 
 # Create your views here.
 def home(request):
@@ -40,6 +40,11 @@ def media_index(request):
     medias = Media.objects.all()
     return render(request, 'media.html', {'medias': medias})
 
+@login_required
+def chiste_index(request):
+    chistes = Chiste.objects.all()
+    return render(request, 'chiste.html', {'chistes': chistes})
+
 class WordCreate(LoginRequiredMixin, CreateView):
     model = Word
     fields = ['english', 'spanish', 'cognates', 'antonyms']
@@ -59,6 +64,14 @@ class PalabraCreate(LoginRequiredMixin, CreateView):
 class MediaCreate(LoginRequiredMixin, CreateView):
     model = Media
     fields = ['name', 'year', 'picture', 'media_type', 'is_streaming']
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class ChisteCreate(LoginRequiredMixin, CreateView):
+    model = Chiste
+    fields = ['título', 'foto', 'configuración', 'remate']
+    success_url = '/chistes/'
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)

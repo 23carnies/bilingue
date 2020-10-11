@@ -14,5 +14,7 @@ urlpatterns = [
     path('palabras/<int:pk>/update/', views.PalabraUpdate.as_view(), name='palabras_update'),
     path('words/<int:pk>/delete/', views.WordDelete.as_view(), name='words_delete'),
     path('palabras/<int:pk>/delete/', views.PalabraDelete.as_view(), name='palabras_delete'),
+    path('chistes/create/', views.ChisteCreate.as_view(), name='chistes_create'),
+    path('chistes/', views.chiste_index, name='chistes_index'),
     
 ]
