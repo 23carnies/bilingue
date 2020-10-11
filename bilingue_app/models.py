@@ -1,13 +1,18 @@
 from django.db import models
-from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
 
 # Create your models here.
 class User(AbstractUser):
-    avatar = models.CharField(max_length=200)
-    bio = models.TextField(max_length=500)
-    language = models.TextField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
+    first_name = models.CharField(max_length=100)
+    avatar = models.CharField(
+        max_length=300,
+        blank=True)
+    bio = models.TextField(
+        max_length=500,
+        blank=True)
+    native_language = models.TextField(max_length=100)
 
 class Word(models.Model):
     english = models.CharField(max_length=100)
@@ -24,6 +29,8 @@ class Word(models.Model):
         blank=True
         )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.english
     def get_absolute_url(self):
         return reverse('vocabulary')
 
@@ -41,6 +48,8 @@ class Palabra(models.Model):
         max_length=200,
         blank=True
         )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.español    
     def get_absolute_url(self):
         return reverse('vocabulary')

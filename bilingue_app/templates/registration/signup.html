@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
+
 {% block content %}
-
-<h1>Sign Up</h1>
-
-<!-- Add the signup form -->
-<form method="post" action="{% url 'signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn edit-btn" value="signup">
-</form>
-
+  <h2>Sign up</h2>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
 {% endblock %}
