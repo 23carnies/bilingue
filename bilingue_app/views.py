@@ -43,7 +43,7 @@ def media_index(request):
 @login_required
 def chiste_index(request):
     chistes = Chiste.objects.all()
-    return render(request, 'chiste.html', {'chistes': chistes})
+    return render(request, 'chistes.html', {'chistes': chistes})
 
 class WordCreate(LoginRequiredMixin, CreateView):
     model = Word
@@ -86,6 +86,11 @@ class PalabraUpdate(LoginRequiredMixin, UpdateView):
     fields = ['español', 'inglés', 'cognadas', 'antónimos']
     success_url = '/vocabulary/'
 
+class ChisteUpdate(LoginRequiredMixin, UpdateView):
+    model = Chiste
+    fields = ['título', 'foto', 'configuración', 'remate']
+    success_url = '/chistes/'
+
 class WordDelete(LoginRequiredMixin, DeleteView):
     model = Word
     success_url = '/vocabulary/'
@@ -93,3 +98,7 @@ class WordDelete(LoginRequiredMixin, DeleteView):
 class PalabraDelete(LoginRequiredMixin, DeleteView):
     model = Palabra
     success_url = '/vocabulary/'
+
+class ChisteDelete(LoginRequiredMixin, DeleteView):
+    model = Chiste
+    success_url = '/chistes/'
