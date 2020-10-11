@@ -10,9 +10,14 @@
             <h4>English: {{ word.english }}</h4>
         </div>
         <div class="card-back span">
+            <h4>English: {{ word.english }}</h4>
             <h4>Spanish: {{ word.spanish }}</h4>
+          {% if word.cognates %}  
             <p>Cognates: {{ word.cognates }}</p>
+          {% endif %}
+          {% if word.antonyms %}
             <p>Antonyms: {{ word.antonyms }}</p>
+          {% endif %}
         </div>
     </div>
 </div>
@@ -25,9 +30,14 @@
             <h4>Español: {{ palabra.español }}</h4>
         </div>
         <div class="card-back eng">
+            <h4>Español: {{ palabra.español }}</h4>
             <h4>Inglés: {{ palabra.inglés }}</h4>
+          {% if palabra.cognadas %}  
             <p>Cognadas: {{ palabra.cognadas }}</p>
+          {% endif %}
+          {% if palabra.antónimos %}
             <p>Antónimos: {{ palabra.antónimos }}</p>
+          {% endif %}
         </div>
     </div>
 </div>

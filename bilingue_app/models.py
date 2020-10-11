@@ -24,6 +24,8 @@ class Word(models.Model):
         blank=True
         )
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.english
     def get_absolute_url(self):
         return reverse('vocabulary')
 
@@ -41,6 +43,8 @@ class Palabra(models.Model):
         max_length=200,
         blank=True
         )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.español  
     def get_absolute_url(self):
         return reverse('vocabulary')

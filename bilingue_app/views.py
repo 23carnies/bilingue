@@ -27,6 +27,13 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+@login_required
+def vocabulary_index(request):
+    words = Word.objects.filter(user=request.user)
+    palabras = Palabra.objects.filter(user=request.user)
+    return render(request, 'vocabulary.html', 
+        { 'palabras': palabras, 'words': words }
+    )
 
 class WordCreate(LoginRequiredMixin, CreateView):
     model = Word
@@ -42,10 +49,3 @@ class PalabraCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-@login_required
-def vocabulary_index(request):
-    words = Word.objects.filter(user=request.user)
-    palabras = Palabra.objects.filter(user=request.user)
-    return render(request, 'vocabulary.html', 
-        { 'palabras': palabras, 'words': words }
-    )
