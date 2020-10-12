@@ -14,6 +14,7 @@
         <nav>
             <ul class="menu">
                 <li class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo" width="40px"></a></li>
+                <li>Hi, {{user.first_name}}</li>
                 <li class="item"><a href="{% url 'about' %}">About</a></li>
               {% if user.is_authenticated %}  
                 <li class="item"><a href="{% url 'vocabulary' %}">Vocabulary</a></li>
