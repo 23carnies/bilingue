@@ -93,6 +93,12 @@ class PalabraUpdate(LoginRequiredMixin, UpdateView):
     fields = ['español', 'inglés', 'cognadas', 'antónimos']
     success_url = '/vocabulary/'
 
+
+class MediaUpdate(LoginRequiredMixin, UpdateView):
+    model = Media
+    fields = ['name', 'year', 'picture', 'media_type']
+    success_url = '/media/'
+
 class ChisteUpdate(LoginRequiredMixin, UpdateView):
     model = Chiste
     fields = ['título', 'foto', 'configuración', 'remate']
@@ -105,6 +111,10 @@ class WordDelete(LoginRequiredMixin, DeleteView):
 class PalabraDelete(LoginRequiredMixin, DeleteView):
     model = Palabra
     success_url = '/vocabulary/'
+
+class MediaDelete(LoginRequiredMixin, DeleteView):
+    model = Media
+    success_url = '/media/'
 
 class ChisteDelete(LoginRequiredMixin, DeleteView):
     model = Chiste
