@@ -20,7 +20,7 @@ nav {
     background: #272727;
     padding: 0 15px;
 }
-a:not(credit) {
+a:not(credit), #hi {
     color: #02eef4;
     text-decoration: none;
 }
@@ -124,13 +124,9 @@ p {
 .add{
     padding: 10px 70px;
     border-radius: 8px;
+    width: 350px;
+    margin: 10px auto;
 }
-/* #addSpan {
-    padding: 10px 70px;
-   
-    border-radius: 8px;
-    margin-top: 10px;
-} */
 
 /* Flip Card */
 .eng {
@@ -185,10 +181,10 @@ p {
     margin: 20px;
     padding: 15px 5px 5px 5px;
 }
-.media-card:hover, .btn.eng:hover {
+.media-card:hover, .btn.eng:hover, .add.eng:hover {
     box-shadow: 0 8px 16px rgba(88, 50, 253, 1);
 }
-.btn.span:hover{
+.btn.span:hover, .add.span:hover{
     box-shadow: 0 4px 8px rgba(2, 238, 244, .5);
 }
 .container{
@@ -218,11 +214,11 @@ form {
 }
 
 input:not(.btn) {
-
     margin: 1%;
-    border: 1px double rgb(88, 50, 253)
+    border: 1px double rgb(88, 50, 253);
     border-radius: 10px;
 }
+
 label{
     font-family: 'Cinzel Decorative', cursive;
 }
@@ -233,4 +229,15 @@ label{
     color: rgb(150, 149, 149);
     margin-top: -1%;
     text-align: right;
+}
+
+/* Front Page Flex */
+#front-flex {
+    display: flex;
+    flex-flow: column wrap;
+
+}
+
+#todo-flex {
+
 }
