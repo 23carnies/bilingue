@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for chiste in chistes %}
+<div class="media-card">
+  {% if chiste.foto %}  
+    <img src="{{chiste.foto}}" alt="Avatar">
+  {% else %}
+    <img src="https://picsum.photos/200" alt="Random picture">
+  {% endif %}
+    <div class="container">
+      <h4><b>{{chiste.título}}</b></h4>
+      <p>{{chiste.configuración}}</p>
+      <p>{{chiste.remate}}</p>
+      <a href="{% url 'chistes_update' chiste.id %}" class="btn edit-btn">Edit</a>
+      <a href="{% url 'chistes_delete' chiste.id %}" class="btn del-btn">Delete</a>
+    </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% autoescape on %}
-
 {% for word in words %}
 <div class="card">
     <div class="card-inner">
@@ -10,9 +8,16 @@
             <h4>English: {{ word.english }}</h4>
         </div>
         <div class="card-back span">
+            <h4>English: {{ word.english }}</h4>
             <h4>Spanish: {{ word.spanish }}</h4>
+          {% if word.cognates %}  
             <p>Cognates: {{ word.cognates }}</p>
+          {% endif %}
+          {% if word.antonyms %}
             <p>Antonyms: {{ word.antonyms }}</p>
+          {% endif %}
+          <a href="{% url 'words_update' word.id %}" class="btn span">Edit</a>
+          <a href="{% url 'words_delete' word.id %}" class="btn span">Delete</a>
         </div>
     </div>
 </div>
@@ -25,14 +30,19 @@
             <h4>Español: {{ palabra.español }}</h4>
         </div>
         <div class="card-back eng">
+            <h4>Español: {{ palabra.español }}</h4>
             <h4>Inglés: {{ palabra.inglés }}</h4>
+          {% if palabra.cognadas %}  
             <p>Cognadas: {{ palabra.cognadas }}</p>
+          {% endif %}
+          {% if palabra.antónimos %}
             <p>Antónimos: {{ palabra.antónimos }}</p>
+          {% endif %}
+          <a href="{% url 'palabras_update' palabra.id %}" class="btn eng">Edit</a>
+          <a href="{% url 'palabras_delete' palabra.id %}" class="btn eng">Delete</a>
         </div>
     </div>
 </div>
 {% endfor %}
-
-{% endautoescape %}
 
 {% endblock %}

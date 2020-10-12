@@ -2,9 +2,9 @@
 
 {% block content %}
   {% if object %}
-    <h1>Edit <span class="">{{ object.español }}</span></h1>
+    <h1>Edit <span class="">{{ object.media }}</span></h1>
   {% else %}
-    <h1>Poner Palabra</h1>
+    <h1>Poner Media</h1>
   {% endif %}
   <form action="" method="post" class="span">
     {% csrf_token %}
@@ -14,4 +14,3 @@
     <input type="submit" value="Enviar!" class="btn span">
   </form>
 
-{% endblock %}
