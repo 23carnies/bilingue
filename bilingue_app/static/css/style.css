@@ -20,7 +20,7 @@ nav {
     background: #272727;
     padding: 0 15px;
 }
-a {
+a:not(credit) {
     color: #02eef4;
     text-decoration: none;
 }
@@ -76,8 +76,24 @@ h1 {
     text-align: center;
     font-size: 36px;
     font-weight: 700;
-    color: white;
+    color: #272727;
     font-family: 'Cinzel Decorative', cursive;
+    text-shadow: 0 -4px 8px rgba(2, 238, 244, .7),
+                 0 4px 8px rgba(2, 238, 244, .7);
+                 
+    /* animation: scatter 1.75s infinite; */
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    to {
+        text-shadow: 4px 0 8px rgba(88, 50, 253, .8),
+                     -4px 0 8px rgba(88, 50, 253, .8);
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    animation: none;
 }
 
 p {
@@ -92,7 +108,17 @@ p {
     flex-direction: column; */
     max-width: 80%;
     padding: 10px;
-    
+    text-align: center;
+}
+
+.about > p {
+    color: rgb(180, 177, 177);
+    text-align: left;
+}
+.about > h4 {
+    text-align: left;
+    color: rgb(180, 177, 177);
+    font-weight: 700;
 }
 
 .add{
@@ -159,10 +185,52 @@ p {
     margin: 20px;
     padding: 15px 5px 5px 5px;
 }
-.media-card:hover{
+.media-card:hover, .btn.eng:hover {
     box-shadow: 0 8px 16px rgba(88, 50, 253, 1);
+}
+.btn.span:hover{
+    box-shadow: 0 4px 8px rgba(2, 238, 244, .5);
 }
 .container{
     padding: 2px 16px;
     color: #fff
+}
+
+.btn.eng{
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(88, 50, 253, .5);
+    margin: 5%;
+}
+
+.btn.span{
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(2, 238, 244, .5);
+    margin: 5%;
+}
+
+form {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 10%;
+
+}
+
+input:not(.btn) {
+
+    margin: 1%;
+    border: 1px double rgb(88, 50, 253)
+    border-radius: 10px;
+}
+label{
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+/* Photo Credits */
+.title-credit, .credit {
+    font-size: 15px;
+    color: rgb(150, 149, 149);
+    margin-top: -1%;
+    text-align: right;
 }

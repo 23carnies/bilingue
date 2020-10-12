@@ -1,10 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import User, Word, Palabra, Media
+from .models import Word, Palabra, Media, Chiste, Photo
+from .forms import SignupForm
+import uuid
+import boto3
+
+
+S3_BASE_URL = 'https://s3.us-east-1.amazonaws.com/'
+BUCKET = '23carnies'
 
 # Create your views here.
 def home(request):
@@ -16,14 +23,14 @@ def about(request):
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('home')
         else:
             error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
+    form = SignupForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
@@ -39,6 +46,11 @@ def vocabulary_index(request):
 def media_index(request):
     medias = Media.objects.all()
     return render(request, 'media.html', {'medias': medias})
+
+@login_required
+def chiste_index(request):
+    chistes = Chiste.objects.all()
+    return render(request, 'chistes.html', {'chistes': chistes})
 
 class WordCreate(LoginRequiredMixin, CreateView):
     model = Word
@@ -63,6 +75,14 @@ class MediaCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+class ChisteCreate(LoginRequiredMixin, CreateView):
+    model = Chiste
+    fields = ['título', 'foto', 'configuración', 'remate']
+    success_url = '/chistes/'
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 class WordUpdate(LoginRequiredMixin, UpdateView):
     model = Word
     fields = ['english', 'spanish', 'cognates', 'antonyms']
@@ -73,10 +93,16 @@ class PalabraUpdate(LoginRequiredMixin, UpdateView):
     fields = ['español', 'inglés', 'cognadas', 'antónimos']
     success_url = '/vocabulary/'
 
+
 class MediaUpdate(LoginRequiredMixin, UpdateView):
     model = Media
     fields = ['name', 'year', 'picture', 'media_type']
     success_url = '/media/'
+
+class ChisteUpdate(LoginRequiredMixin, UpdateView):
+    model = Chiste
+    fields = ['título', 'foto', 'configuración', 'remate']
+    success_url = '/chistes/'
 
 class WordDelete(LoginRequiredMixin, DeleteView):
     model = Word
@@ -89,3 +115,28 @@ class PalabraDelete(LoginRequiredMixin, DeleteView):
 class MediaDelete(LoginRequiredMixin, DeleteView):
     model = Media
     success_url = '/media/'
+
+class ChisteDelete(LoginRequiredMixin, DeleteView):
+    model = Chiste
+    success_url = '/chistes/'
+
+def add_photo(request, cat_id):
+    # photo-file will be the "name" attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # need a unique "key" for S3 / needs image file extension too
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # just in case something goes wrong
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            # build the full url string
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            # we can assign to cat_id or cat (if you have a cat object)
+            photo = Photo(url=url, cat_id=cat_id)
+            photo.save()
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('detail', cat_id=cat_id)
+    #I have questions about everything below 121
+

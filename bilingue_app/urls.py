@@ -16,5 +16,9 @@ urlpatterns = [
     path('media/', views.media_index, name='media_index'),
     path('media/<int:pk>/update/', views.MediaUpdate.as_view(), name='media_update'),
     path('media/<int:pk>/delete/', views.MediaDelete.as_view(), name='media_delete'),
-    
+    path('chistes/create/', views.ChisteCreate.as_view(), name='chistes_create'),
+    path('chistes/', views.chiste_index, name='chistes_index'),
+    path('chistes/<int:pk>/update/', views.ChisteUpdate.as_view(), name='chistes_update'),
+    path('chistes/<int:pk>/delete/', views.ChisteDelete.as_view(), name='chistes_delete'),
+   
 ]

@@ -14,10 +14,12 @@
         <nav>
             <ul class="menu">
                 <li class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo" width="40px"></a></li>
+                <li>Hi, {{user.first_name}}</li>
                 <li class="item"><a href="{% url 'about' %}">About</a></li>
               {% if user.is_authenticated %}  
                 <li class="item"><a href="{% url 'vocabulary' %}">Vocabulary</a></li>
                 <li class="item"><a href="{% url 'media_index' %}">Media</a></li>
+                <li class="item"><a href="{% url 'chistes_index' %}">Chistes</a></li>
                 <li class="item"><a href="{% url 'logout' %}">Log Out</a></li>
               {% else %}  
                 <li class="item button"><a href="{% url 'login' %}">Log In</a></li>
