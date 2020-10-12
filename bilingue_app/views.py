@@ -110,14 +110,6 @@ class ChisteDelete(LoginRequiredMixin, DeleteView):
     model = Chiste
     success_url = '/chistes/'
 
-@login_required
-def vocabulary_index(request):
-    words = Word.objects.all()
-    palabras = Palabra.objects.all()
-    return render(request, 'vocabulary.html', 
-        { 'palabras': palabras, 'words': words }
-        )
-
 def add_photo(request, cat_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
