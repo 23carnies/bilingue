@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import User, Word, Palabra
+from django.contrib.auth import get_user_model
+from .models import Word, Palabra
 
 # Register your models here.
-admin.site.register(User)
+admin.site.register(get_user_model())
 admin.site.register(Word)
 admin.site.register(Palabra)
