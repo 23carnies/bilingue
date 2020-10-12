@@ -159,10 +159,44 @@ p {
     margin: 20px;
     padding: 15px 5px 5px 5px;
 }
-.media-card:hover{
+.media-card:hover, .btn.eng:hover {
     box-shadow: 0 8px 16px rgba(88, 50, 253, 1);
+}
+.btn.span:hover{
+    box-shadow: 0 4px 8px rgba(2, 238, 244, .5);
 }
 .container{
     padding: 2px 16px;
     color: #fff
+}
+
+.btn.eng{
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(88, 50, 253, .5);
+    margin: 5%;
+}
+
+.btn.span{
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(2, 238, 244, .5);
+    margin: 5%;
+}
+
+form {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 10%;
+
+}
+
+input:not(.btn) {
+
+    margin: 1%;
+    border: 1px double rgb(88, 50, 253)
+    border-radius: 10px;
+}
+label{
+    font-family: 'Cinzel Decorative', cursive;
 }

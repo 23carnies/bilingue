@@ -57,6 +57,13 @@ class Palabra(models.Model):
     def get_absolute_url(self):
         return reverse('palabra')
 
+class Photo(models.Model):
+    url = models.CharField(max_length=200)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Photo for user_id: {self.user_id} @{self.url}"
+
 class Media(models.Model):
     name = models.CharField(max_length=250)
     year = models.IntegerField(blank=True, null=True)
@@ -69,7 +76,7 @@ class Media(models.Model):
         choices=MEDIA_TYPES,
         default=MEDIA_TYPES[0][0]
     )
-
+    photos = models.ManyToManyField(Photo)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -91,7 +98,10 @@ class Chiste(models.Model):
         max_length=200,
         blank=True
     )
+    photos = models.ManyToManyField(Photo)
     def __str__(self):
         return self.título  
     def get_absolute_url(self):
         return reverse('chistes')
+
+
