@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import User, Word, Palabra, Media, Chiste, Photo
+from .models import Word, Palabra, Media, Chiste, Photo
+from .forms import SignupForm
 import uuid
 import boto3
 
@@ -22,14 +23,14 @@ def about(request):
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('home')
         else:
             error_message = 'Invalid sign up - try again'
-    form = UserCreationForm()
+    form = SignupForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
@@ -110,6 +111,13 @@ class ChisteDelete(LoginRequiredMixin, DeleteView):
     success_url = '/chistes/'
 
 @login_required
+def vocabulary_index(request):
+    words = Word.objects.all()
+    palabras = Palabra.objects.all()
+    return render(request, 'vocabulary.html', 
+        { 'palabras': palabras, 'words': words }
+        )
+
 def add_photo(request, cat_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
@@ -129,3 +137,4 @@ def add_photo(request, cat_id):
             print('An error occurred uploading file to S3')
     return redirect('detail', cat_id=cat_id)
     #I have questions about everything below 121
+
