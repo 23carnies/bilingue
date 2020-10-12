@@ -70,7 +70,8 @@ class PalabraCreate(LoginRequiredMixin, CreateView):
 
 class MediaCreate(LoginRequiredMixin, CreateView):
     model = Media
-    fields = ['name', 'year', 'picture', 'media_type', 'is_streaming']
+    fields = ['name', 'year', 'picture', 'media_type']
+    success_url = '/media/'
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
