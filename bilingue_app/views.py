@@ -137,23 +137,31 @@ class UserDelete(LoginRequiredMixin, DeleteView):
     success_url = '/about/'
 
 def user_photo(request, user_id):
-    # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
         s3 = boto3.client('s3')
-        # need a unique "key" for S3 / needs image file extension too
         key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-        # just in case something goes wrong
         try:
             s3.upload_fileobj(photo_file, BUCKET, key)
-            # build the full url string
             url = f"{S3_BASE_URL}/{BUCKET}/{key}"
-            # we can assign to cat_id or cat (if you have a cat object)
             user = get_user_model().objects.get(id=user_id)
             user.avatar = url
             user.save()
         except:
             print('An error occurred uploading file to S3')
-    return redirect('/home/', user_id=user_id)
-    #I have questions about everything below 121
+    return redirect('/', user_id=user_id)
 
+def media_photo(request, media_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            url = f"{S3_BASE_URL}/{BUCKET}/{key}"
+            media = Media.objects.get(id=media_id)
+            media.picture = url
+            media.save()
+        except:
+            print('An error occurred uploading file to S3')
+    return redirect('/media/', media_id=media_id)

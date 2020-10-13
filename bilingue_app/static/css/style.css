@@ -9,86 +9,101 @@
     margin: 0;
     font-family: 'Alice', Palatino, serif;
     font-size: 18px;
-    color: #02eef4;
 }
 body {
     font-family: sans-serif;
     font-size: 16px;
     background-color: #272727;
     text-align: center;
+    height: 100vh;
 }
 nav {
+    width: 100%;
     background: #272727;
-    padding: 0 15px;
+    padding: 0 10px;
+    border-bottom: 1px solid #02eef4;
+
+}
+nav ul {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+}
+nav ul li {
+    list-style: none;
+    position: relative;
+    padding: 15px 15px;
+    transition: 0.5s;
+    /* width: 100%; */
+}
+nav ul li a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #02eef4;
+}
+header ul li:hover {
+    background: #5832fd;
+}
+header ul li:last-child{
+    border-right: none;
+}
+nav ul li ul {
+    position: absolute;
+    top: 45px;
+    left: -110px;
+    background: #272727;
+    display: block;
+    width: 200px;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+nav ul li:hover ul {
+    opacity: 1;
+    visibility: visible;
+}
+nav ul li ul li {
+    border-right: none;
+    border-bottom: 1px solid #02eef4;
+}
+@media screen and (max-width:768px) {
+    nav ul{
+        display: block;
+    }
+    nav ul li {
+        display: block;
+    }
+    nav ul li ul {
+        left: 0;
+        width: 100%;
+        z-index: 10;
+    }
+}
+
+.logo {
+    padding: 5px;
 }
 #hi {
-    order: 2;
-    width: 30%;
+    margin-left: auto;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-}
-.about-li {
-    order: 3;
-}
-.auth {
-    order: 4;
 }
 a:not(credit), #hi {
     color: #02eef4;
     text-decoration: none;
 }
-.menu {   
-    list-style-type: none;
-}
-.logo {
-    order: 1;
-    padding: 5px;
-}
-.item {
-    width: 100%;
-    text-align: center;
-    /* display: none; */
-    padding: 10px;
-    color: white;
-}
-.item.button {
-    order: 5;
-    padding: 9px 5px;
-}
-.active .item {
-    display: block;
-}
-.item a:hover,
-.item a:hover::after {
-    color: rgb(88, 50, 253);
-    text-shadow: .5px .5px #02eef4;
-}
 .nav-avatar {
     border-radius: 50%;
     border: 3px outset white;
     margin-left: 8px;
+} 
+.about-logout {
+    margin-left: auto;
 }
 
-/* Mobile menu */
-.menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.menu li a {
-    display: block;
-    padding: 15px 5px;
-}
-
-/* .toggle {
-    order: 1;
-    font-size: 20px;
-    color: #02eef4;}
-.button.secondary { divider between buttons and menu links
-    border-bottom: 1px #444 solid;
-} */
 
 /* Main Page */
 h1 {
@@ -122,10 +137,6 @@ p {
 }
 
 .about {
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; */
     max-width: 80%;
     padding: 10px;
     text-align: center;
@@ -140,6 +151,7 @@ p {
     color: rgb(180, 177, 177);
     font-weight: 700;
 }
+
 
 .add{
     padding: 10px 70px;
@@ -158,14 +170,20 @@ p {
     color: #02eef4;
 }
 .card {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #02eef4;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 150px;
     border: 1px solid #fff;
     border-radius: 12px;
     perspective: 1000px;
 }
 .card-inner{
+
+    border-radius: 12px;
     position: relative;
     width: 100%;
     height: 100%;
@@ -177,6 +195,11 @@ p {
     transform: rotateY(180deg);
 }
 .card-front, .card-back {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -228,23 +251,43 @@ p {
     margin: 5%;
 }
 
+/* Forms */
+
 form {
     max-width: 80%;
     margin: 0 auto;
     padding: 10%;
     
 }
-
 input:not(.btn) {
     margin: 1%;
     border: 1px double rgb(88, 50, 253);
     border-radius: 10px;
     color: black;
 }
-
 label{
     font-family: 'Cinzel Decorative', cursive;
 }
+/* Home */
+#follow-social {
+    margin-top: 10px;
+    color: #02eef4;
+}
+.follow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 3px #5832fd,
+                -1px 3px #5832fd;
+    margin: 15px;
+}
+.social {
+    max-width: 300px;
+    color: #02eef4;
+    flex-flow: row wrap;
+}
+
+
 
 /* Photo Credits */
 .title-credit, .credit {
@@ -261,10 +304,21 @@ label{
 
 }
 
-#todo-flex {
+/* #todo-flex {
 
+} */
+
+footer {
+    margin-top: 20px;
+    max-height: 50px;
+    background-color: #5832fd;
+    color: #02eef4;
 }
 
+footer > p {
+    text-align: left;
+    margin-left: 10px;
+}
 
 /* Mobile Sizing */
 

@@ -8,26 +8,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script defer src="{% static 'js/main.js' %}"></script>
 </head>
 <body>
     <header>
         <nav>
             <ul class="menu">
-                <li class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo" width="60px"></a></li>
-                <li class="item about-li"><a href="{% url 'about' %}">About</a></li>
-              {% if user.is_authenticated %}  
-                <li id="hi">Hi, {{user.username}}<img src={{user.avatar}} alt=User Avatar width="60" class="nav-avatar"></li>
-                <li class="item auth"><a href="{% url 'vocabulary' %}">Vocabulary</a></li>
-                <li class="item auth"><a href="{% url 'media_index' %}">Media</a></li>
-                <li class="item auth"><a href="{% url 'chistes_index' %}">Chistes</a></li>
-                <li class="item auth"><a href="{% url 'logout' %}">Log Out</a></li>
-              {% else %}  
-                <li class="item button"><a href="{% url 'login' %}">Log In</a></li>
-                <li class="item button secondary"><a href="{% url 'signup' %}">Sign Up</a></li>
+              <li class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo" width="60px"></a></li>
+            {% if user.is_authenticated %}  
+              <li id="hi">Hi, {{user.username}} 
+              {% if user.avatar %}
+              <img src={{user.avatar}} alt="User"Avatar width="40" class="nav-avatar">
+              {% endif %}
+              </li>
+              <li><a tabindex="0"><i class="fas fa-bars"></i></a>
+                <ul>
+                  <li><a href="{% url 'vocabulary' %}">Vocabulary</a></li>
+                  <li><a href="{% url 'media_index' %}">Media</a></li>
+                  <li><a href="{% url 'chistes_index' %}">Chistes</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'user_detail' user.id %}">Profile</a></li>
+                  <li><a href="{% url 'logout' %}">Log Out</a></li>
+                </ul>
+              </li>  
+            {% else %}  
+              <li class="about-logout"><a href="{% url 'about' %}">About</a></li>
+              <li><a href="{% url 'login' %}">Log In</a></li>
+              <li><a href="{% url 'signup' %}">Sign Up</a></li>
               {% endif %}  
             </ul>
-
-
         </nav>
     </header>
     <main>
@@ -35,5 +44,8 @@
         {% endblock %}
     
     </main>
+    <footer>
+      <p>&copy;2020 <a href="#">23carnies</a></p>
+    </footer>
 </body>
 </html>
