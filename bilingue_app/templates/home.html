@@ -16,21 +16,44 @@
     <p>{{user.id}}</p>
     <a href="{% url 'user_detail' user.id %}" class="add span">User Home</a>
 </div>
-{% else %}
+{% endif %}
 <h2>Spanish Speakers to Follow on Social Media</h2>
 <div class="follow">
     <div class="leonardo">
-        <img src="http://www.fineart-tips.com/wp-content/uploads/2016/11/ML95Xrs.jpg" alt="Leonardo Pereznieto" width="400">
+        <img src="http://www.fineart-tips.com/wp-content/uploads/2016/11/ML95Xrs.jpg" alt="Leonardo Pereznieto" width="300">
         <h4>Leonardo Pereznieto</h4>
+        <p>Artista del México</p>
         <div class="icons">
-            <i class="fab fa-twitter fa-3x"><a href="https://twitter.com/ArtistLeonardo"</i>
-            <i class="fab fa-instagram-square fa-3x"><a href="https://www.instagram.com/artedivierteofficial/?hl=en"</i>
-            <i class="fab fa-youtube-square fa-3x"><a href="https://www.youtube.com/user/ArteDivierte"</i>
+            <i class="fab fa-twitter fa-3x"><a href="https://twitter.com/ArtistLeonardo"></a></i>
+            <i class="fab fa-instagram-square fa-3x"><a href="https://www.instagram.com/artedivierteofficial/"></a></i>
+            <i class="fab fa-youtube-square fa-3x"><a href="https://www.youtube.com/user/ArteDivierte"></a></i>
         </div>
     </div>
+    <div class="llegavideos">
+        <img src="https://pbs.twimg.com/profile_images/685020914220691456/uS6ZrMWV_400x400.jpg" alt="Llega Videos" width="300">
+        <h4>Llega Videos</h4>
+        <p>Experiments with home items all in Spanish</p>
+        <div class="icons">
+            <i class="fab fa-twitter fa-3x"><a href="https://twitter.com/LlegaVideos"></a></i>
+            <i class="fab fa-instagram-square fa-3x"><a href="https://www.instagram.com/llegavideos/"></a></i>
+            <i class="fab fa-youtube-square fa-3x"><a href="https://www.youtube.com/user/LlegaVideos"></a></i>
+        </div>
+    </div>
+    <div class="ruben">
+        <img src="{% static 'images/rbnterrassa.png' %}" alt="Ruben Sebastian" width="300">
+        <h4>Ruben Sebastian</h4>
+        <p>Math, physics, and chemistry in Spanish</p>
+        <div class="icons">
+            <a href="https://twitter.com/Ruben_Cingle"><i class="fab fa-twitter fa-3x"></i></a>
+            <a href="https://www.instagram.com/rbnterrassa/"><i class="fab fa-instagram-square fa-3x"></i></a>
+            <a href="https://www.youtube.com/user/rbnterrassa"><i class="fab fa-youtube-square fa-3x"></i></a>
+        </div>
+    </div>
+    <h3>Find more social media resouces at <a href="https://www.spanish.academy/blog/social-media/">spanish.academy</a>.</h3>
+
 
 </div>
-{% endif %}
+
     
 
 {% endblock %}
