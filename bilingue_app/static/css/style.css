@@ -10,13 +10,22 @@
     font-family: 'Alice', Palatino, serif;
     font-size: 18px;
 }
+html, body {
+    height: 100%;
+}
 body {
+    display: flex;
+    flex-direction: column;
     font-family: sans-serif;
     font-size: 16px;
     background-color: #272727;
     text-align: center;
-    height: 100vh;
 }
+.content {
+    flex: 1 0 auto;
+}
+
+
 nav {
     width: 100%;
     background: #272727;
@@ -175,7 +184,7 @@ p {
     background-color: #5832fd;
     color: #02eef4;
 }
-.card {
+.card-container {
     margin: 20px;
     display: flex;
     align-items: center;
@@ -187,20 +196,21 @@ p {
     border-radius: 12px;
     perspective: 1000px;
 }
-.card-inner{
-
+.card{
     border-radius: 12px;
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
+    transition: .5s ease;
     transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50%;
+    backface-visibility: hidden;
 }
-.card:hover .card-inner{
+/* .card:hover .card-inner{
     transform: rotateY(180deg);
-}
-.card-front, .card-back {
+} */
+.front, .back {
     display: flex;
     flex-flow: column wrap;
     align-items: center;
@@ -209,17 +219,29 @@ p {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+}
+.card div{
+    display: block;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+
 }
 /* .card-front{
     background-color: #02eef4;
     color: white;
 } */
-.card-back{
+.back{
     /* background-color: #5832fd;
     color: #fff; */
     transform: rotateY(180deg);
+    z-index: 999;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+    box-shadow: 1px 3px #02eef4;
 }
 
 /* Media Card */
@@ -232,7 +254,7 @@ p {
 }
 .media-card:hover, .btn.eng:hover, .add.eng:hover {
     box-shadow: 0 8px 16px rgba(88, 50, 253, 1);
-    transition: box-shadow 0.2s ease-in-out;
+    /* transition: box-shadow 0.2s ease-in-out; */
 }
 .btn.span:hover, .add.span:hover{
     box-shadow: 0 4px 8px rgba(2, 238, 244, .5);
@@ -315,8 +337,9 @@ label{
 } */
 
 footer {
-    margin-top: 20px;
-    max-height: 50px;
+    /* margin-top: 20px;
+    max-height: 50px; */
+    flex-shrink: 0;
     background-color: #5832fd;
     color: #02eef4;
 }

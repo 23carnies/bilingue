@@ -2,12 +2,13 @@
 {% block content %}
 
 {% for word in words %}
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front eng">
+<div class="card-container">
+    <div class="card" id="flipMe">
+        <div class="front eng">
+            <button onclick="flipEng()" class="btn span">Flip</button>
             <h4>English: {{ word.english }}</h4>
         </div>
-        <div class="card-back span">
+        <div class="back span" id="backEng">
             <h4>English: {{ word.english }}</h4>
             <h4>Spanish: {{ word.spanish }}</h4>
           {% if word.cognates %}  
@@ -16,20 +17,22 @@
           {% if word.antonyms %}
             <p>Antonyms: {{ word.antonyms }}</p>
           {% endif %}
-          <a href="{% url 'words_update' word.id %}" class="btn span">Edit</a>
-          <a href="{% url 'words_delete' word.id %}" class="btn span">Delete</a>
+          <button onclick="flipBackEng()" class="btn eng">Flip</button>
+          <a href="{% url 'words_update' word.id %}" class="btn eng">Edit</a>
+          <a href="{% url 'words_delete' word.id %}" class="btn eng">Delete</a>
         </div>
     </div>
 </div>
 {% endfor %}
 
 {% for palabra in palabras %}
-<div class="card">
-    <div class="card-inner">
-        <div class="card-front span">
+<div class="card-container">
+    <div class="card">
+        <div class="front span" id="spanFlip">
+            <button onclick="flipSpan()" class="btn eng">La Dar Vuelta</button>
             <h4>Español: {{ palabra.español }}</h4>
         </div>
-        <div class="card-back eng">
+        <div class="back eng" id="backSpan">
             <h4>Español: {{ palabra.español }}</h4>
             <h4>Inglés: {{ palabra.inglés }}</h4>
           {% if palabra.cognadas %}  
@@ -39,6 +42,7 @@
             <p>Antónimos: {{ palabra.antónimos }}</p>
           {% endif %}
           <div>
+            <button onclick="flipBackSpan()" class="btn span">La Dar Vuelta</button>
             <a href="{% url 'palabras_update' palabra.id %}" class="btn eng">Edit</a>
             <a href="{% url 'palabras_delete' palabra.id %}" class="btn eng">Delete</a>
           </div>
@@ -46,6 +50,7 @@
 
     </div>
 </div>
+
 {% endfor %}
 
 {% endblock %}
