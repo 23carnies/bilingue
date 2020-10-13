@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="media-card">
+  {% if user.avatar %}  
+    <img src="{{user.avatar}}" alt="Avatar">
+  {% else %}
+    <img src="https://picsum.photos/200" alt="Random picture">
+  {% endif %}
+    <div class="container">
+      <h4><b>{{user.first_name}}</b></h4>
+        <p>{{user.native_language}}</p>
+     
+      <p>{{user.bio}}</p>
+       <a href="{% url 'user_update' user.id %}" class="btn edit-btn">Edit</a>
+      <a href="{% url 'user_delete' user.id %}" class="btn del-btn">Delete</a>
+    </div>
+  </div>
+
+ 
+{% endblock %}

@@ -16,7 +16,7 @@
                 <li class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo" width="60px"></a></li>
                 <li class="item about-li"><a href="{% url 'about' %}">About</a></li>
               {% if user.is_authenticated %}  
-                <li id="hi">Hi, {{user.first_name}}</li>
+                <li id="hi">Hi, {{user.username}}</li>
                 <li class="item auth"><a href="{% url 'vocabulary' %}">Vocabulary</a></li>
                 <li class="item auth"><a href="{% url 'media_index' %}">Media</a></li>
                 <li class="item auth"><a href="{% url 'chistes_index' %}">Chistes</a></li>

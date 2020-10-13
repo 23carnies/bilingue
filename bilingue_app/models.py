@@ -16,14 +16,13 @@ class CustomUser(AbstractUser):
     username = models.CharField(max_length=100, unique=True)
     email = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=250)
-    first_name = models.CharField(max_length=100)
-    avatar = models.CharField(
+    avatar = models.FileField(blank=True)
+    bio = models.TextField(
         max_length=300,
         blank=True)
-    bio = models.TextField(
-        max_length=500,
-        blank=True)
-    native_language = models.TextField(max_length=100)
+    native_language = models.CharField(max_length=100)
+    def get_absolute_url(self):
+        return reverse('home')
 
 class Word(models.Model):
     english = models.CharField(max_length=100)

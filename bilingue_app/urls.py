@@ -20,5 +20,7 @@ urlpatterns = [
     path('chistes/', views.chiste_index, name='chistes_index'),
     path('chistes/<int:pk>/update/', views.ChisteUpdate.as_view(), name='chistes_update'),
     path('chistes/<int:pk>/delete/', views.ChisteDelete.as_view(), name='chistes_delete'),
-   
+    path('accounts/<int:pk>/', views.User_Detail.as_view(), name='user_detail'),
+    path('accounts/<int:pk>/update', views.UserUpdate.as_view(), name='user_update'),
+    path('accounts/<int:pk>/delete', views.UserDelete.as_view(), name='user_delete'),
 ]

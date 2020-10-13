@@ -9,6 +9,7 @@
     margin: 0;
     font-family: 'Alice', Palatino, serif;
     font-size: 18px;
+    color: #02eef4;
 }
 body {
     font-family: sans-serif;
@@ -221,13 +222,15 @@ form {
     max-width: 80%;
     margin: 0 auto;
     padding: 10%;
-
+    
 }
+
 
 input:not(.btn) {
     margin: 1%;
     border: 1px double rgb(88, 50, 253);
     border-radius: 10px;
+    color: black;
 }
 
 label{

@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView
 from .models import Word, Palabra, Media, Chiste, Photo
-from .forms import SignupForm
+from .forms import SignupForm, UserUpdateForm
 import uuid
 import boto3
 
@@ -33,6 +34,9 @@ def signup(request):
     form = SignupForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+class User_Detail(LoginRequiredMixin, DetailView):
+    model = get_user_model()
 
 @login_required
 def vocabulary_index(request):
@@ -94,7 +98,6 @@ class PalabraUpdate(LoginRequiredMixin, UpdateView):
     fields = ['español', 'inglés', 'cognadas', 'antónimos']
     success_url = '/vocabulary/'
 
-
 class MediaUpdate(LoginRequiredMixin, UpdateView):
     model = Media
     fields = ['name', 'year', 'picture', 'media_type']
@@ -104,6 +107,13 @@ class ChisteUpdate(LoginRequiredMixin, UpdateView):
     model = Chiste
     fields = ['título', 'foto', 'configuración', 'remate']
     success_url = '/chistes/'
+
+class UserUpdate(LoginRequiredMixin, UpdateView):
+    template_name = 'registration/user_change_form.html'
+    form_class = UserUpdateForm
+    model = get_user_model()
+    def get_object(self, queryset=None):
+        return self.request.user
 
 class WordDelete(LoginRequiredMixin, DeleteView):
     model = Word
@@ -120,6 +130,10 @@ class MediaDelete(LoginRequiredMixin, DeleteView):
 class ChisteDelete(LoginRequiredMixin, DeleteView):
     model = Chiste
     success_url = '/chistes/'
+
+class UserDelete(LoginRequiredMixin, DeleteView):
+    model = get_user_model()
+    success_url = '/about/'
 
 def add_photo(request, cat_id):
     # photo-file will be the "name" attribute on the <input type="file">

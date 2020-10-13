@@ -10,11 +10,13 @@
     <a href="{% url 'media_create' %}" class="add span">Poner Media</a>
     <div id="todo-flex">
         <h4>Today, did you: </h4>
-        <form action="" method="POST">
+        <form action="" method="POST"></form>
     </div>
+    <p>{{user.id}}</p>
+    <a href="{% url 'user_detail' user.id %}" class="add span">User Home</a>
 </div>
 
 
     
-</form>
+
 {% endblock %}

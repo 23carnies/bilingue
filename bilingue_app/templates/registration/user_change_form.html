@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if user %}
+    <h1>Edit <span class="">{{ user.username }}</span></h1>
+  {% else %}
+    <h1>Cambiar tus detales</h1>
+  {% endif %}
+  <form action="" method="post" class="span">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="Enviar!" class="btn span">
+  </form>
+
+{% endblock %}
