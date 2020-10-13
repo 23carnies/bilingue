@@ -3,6 +3,7 @@
 {% block content %}
 
 <h1>Hola! Bienvenido a bilingüe</h1>
+{% if user.is_authenticated %}
 <div id="front-flex">
     <a href="{% url 'word_create' %}" class="add eng">Add Word</a>
     <a href="{% url 'palabra_create' %}" class="add span">Poner palabra en español</a>
@@ -15,8 +16,21 @@
     <p>{{user.id}}</p>
     <a href="{% url 'user_detail' user.id %}" class="add span">User Home</a>
 </div>
+{% else %}
+<h2>Spanish Speakers to Follow on Social Media</h2>
+<div class="follow">
+    <div class="leonardo">
+        <img src="http://www.fineart-tips.com/wp-content/uploads/2016/11/ML95Xrs.jpg" alt="Leonardo Pereznieto" width="400">
+        <h4>Leonardo Pereznieto</h4>
+        <div class="icons">
+            <i class="fab fa-twitter fa-3x"><a href="https://twitter.com/ArtistLeonardo"</i>
+            <i class="fab fa-instagram-square fa-3x"><a href="https://www.instagram.com/artedivierteofficial/?hl=en"</i>
+            <i class="fab fa-youtube-square fa-3x"><a href="https://www.youtube.com/user/ArteDivierte"</i>
+        </div>
+    </div>
 
-
+</div>
+{% endif %}
     
 
 {% endblock %}

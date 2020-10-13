@@ -115,13 +115,14 @@ class UserUpdate(LoginRequiredMixin, UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
+
 class WordDelete(LoginRequiredMixin, DeleteView):
     model = Word
     success_url = '/vocabulary/'
 
 class PalabraDelete(LoginRequiredMixin, DeleteView):
     model = Palabra
-    success_url = '/vocabulary/'
+    success_url = '/vocabulary/' 
 
 class MediaDelete(LoginRequiredMixin, DeleteView):
     model = Media
@@ -135,7 +136,7 @@ class UserDelete(LoginRequiredMixin, DeleteView):
     model = get_user_model()
     success_url = '/about/'
 
-def add_photo(request, cat_id):
+def user_photo(request, user_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
     if photo_file:
@@ -146,12 +147,13 @@ def add_photo(request, cat_id):
         try:
             s3.upload_fileobj(photo_file, BUCKET, key)
             # build the full url string
-            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            url = f"{S3_BASE_URL}/{BUCKET}/{key}"
             # we can assign to cat_id or cat (if you have a cat object)
-            photo = Photo(url=url, cat_id=cat_id)
-            photo.save()
+            user = get_user_model().objects.get(id=user_id)
+            user.avatar = url
+            user.save()
         except:
             print('An error occurred uploading file to S3')
-    return redirect('detail', cat_id=cat_id)
+    return redirect('/home/', user_id=user_id)
     #I have questions about everything below 121
 

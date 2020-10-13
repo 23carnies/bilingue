@@ -15,6 +15,12 @@
       <p>{{user.bio}}</p>
        <a href="{% url 'user_update' user.id %}" class="btn edit-btn">Edit</a>
       <a href="{% url 'user_delete' user.id %}" class="btn del-btn">Delete</a>
+      <form action="{% url 'user_photo' user.id %}" enctype="multipart/form-data" method="POST" class="eng">
+      {% csrf_token %}
+      <input type="file" name="photo-file">
+      <br><br>
+      <input type="submit" class="btn" value="Upload Photo">
+    </form>
     </div>
   </div>
 
