@@ -128,7 +128,13 @@ h1 {
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
-    animation: none;
+    .animation {
+        animation: dissolve;
+    }
+}
+
+#lg-logo {
+    width: 60%;
 }
 
 p {

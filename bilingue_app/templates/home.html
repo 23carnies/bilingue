@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 
-<h1>Hola! Bienvenido a bilingüe</h1>
 {% if user.is_authenticated %}
+<h1>Hola! Bienvenido a bilingüe</h1>
 <div id="front-flex">
     <a href="{% url 'word_create' %}" class="add eng">Add Word</a>
     <a href="{% url 'palabra_create' %}" class="add span">Poner palabra en español</a>
@@ -13,16 +13,18 @@
         <h4>Today, did you: </h4>
         <form action="" method="POST"></form>
     </div>
-    <p>{{user.id}}</p>
-    <a href="{% url 'user_detail' user.id %}" class="add span">User Home</a>
+
+    <a href="{% url 'user_detail' user.id %}" class="add span">Take this out User Home</a>
 </div>
+{% else %}
+<img src="{% static 'images/logo.png' %}" alt="bilingüe logo" id="lg-logo">
 {% endif %}
 <h2 id="follow-social">Spanish Speakers to Follow on Social Media</h2>
 <div class="follow">
     <div class="social">
         <img src="http://www.fineart-tips.com/wp-content/uploads/2016/11/ML95Xrs.jpg" alt="Leonardo Pereznieto" width="300">
         <h4>Leonardo Pereznieto</h4>
-        <p>Artista del México</p>
+        <p>Artista Mexicano</p>
         <div class="icons">
             <a href="https://twitter.com/ArtistLeonardo"><i class="fab fa-twitter fa-2x"></i></a>
             <a href="https://www.instagram.com/artedivierteofficial/"><i class="fab fa-instagram-square fa-2x"></i></a>
