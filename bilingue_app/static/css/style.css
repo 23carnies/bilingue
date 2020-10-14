@@ -148,9 +148,11 @@ p {
 .about {
     max-width: 80%;
     padding: 10px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
 }
-
 .about > p {
     color: rgb(180, 177, 177);
     text-align: left;
@@ -160,7 +162,9 @@ p {
     color: rgb(180, 177, 177);
     font-weight: 700;
 }
-
+.chicas, .about {
+    max-width: 95%;
+}
 
 .add{
     padding: 10px 70px;

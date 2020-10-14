@@ -48,7 +48,7 @@ def vocabulary_index(request):
 
 @login_required
 def media_index(request):
-    medias = Media.objects.all()
+    medias = sorted(Media.objects.all(), key=lambda m: m.media_type)
     return render(request, 'media.html', {'medias': medias})
 
 @login_required
