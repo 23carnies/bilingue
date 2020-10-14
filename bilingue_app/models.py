@@ -16,7 +16,7 @@ class CustomUser(AbstractUser):
     username = models.CharField(max_length=100, unique=True)
     email = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=250)
-    avatar = models.CharField(max_length=250, blank=True)
+    avatar = models.FileField(blank=True)
     bio = models.TextField(
         max_length=300,
         blank=True)
