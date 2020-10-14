@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+<div class="profile-center"
 <div class="profile-card">
   {% if user.avatar %}  
     <img src="{{user.avatar}}" alt="Avatar" class="profile-avatar">
@@ -26,6 +26,6 @@
     </form>
     </div>
   </div>
-
+</div>
  
 {% endblock %}

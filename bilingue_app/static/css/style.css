@@ -209,6 +209,7 @@ p {
     transform-style: preserve-3d;
 }
 .card:hover .card-inner{
+    transition: 0.5s;
     transform: rotateY(180deg);
 }
 .card-front, .card-back {
@@ -245,9 +246,13 @@ p {
 }
 
 /* Profile Card */
+.profile-center{
+    text-align: center;
+    padding-top: 3%;
+    color: #02eef4;
+}
 .profile-card {
     max-width: 80%;
-    color: #02eef4;
     padding: 2%;
 }
 .profile-avatar {
@@ -266,11 +271,11 @@ p {
 }
 .media-card:hover, .btn.eng:hover, .add.eng:hover {
     box-shadow: 0 8px 16px rgba(88, 50, 253, 1);
-    transition: box-shadow 0.2s ease-in-out;
+    transition: box-shadow 0.5s ease-in-out;
 }
 .btn.span:hover, .add.span:hover{
     box-shadow: 0 4px 8px rgba(2, 238, 244, .5);
-    transition: box-shadow 0.3s ease-in-out;
+    transition: box-shadow 0.5s ease-in-out;
 }
 .bottom-container{
     padding: 2px 16px;
@@ -337,10 +342,13 @@ label{
     flex-flow: column wrap;
     max-width: 300px;
     color: #02eef4;
-    margin: 10px;
+    margin: 8px;
 }
 .social > img {
+    margin-bottom: 5px;
     max-width: 250px;
+    box-shadow: 1px 5px 5px#5832fd;
+
 }
 
 
