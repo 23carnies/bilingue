@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<h2>Flashcards</h2>
+
 {% for word in words %}
 <div class="card">
     <div class="card-inner">
@@ -16,8 +18,10 @@
           {% if word.antonyms %}
             <p>Antonyms: {{ word.antonyms }}</p>
           {% endif %}
-          <a href="{% url 'words_update' word.id %}" class="btn span">Edit</a>
-          <a href="{% url 'words_delete' word.id %}" class="btn span">Delete</a>
+          <div class="buttons>
+            <a href="{% url 'words_update' word.id %}" class="btn span">Edit</a>
+            <a href="{% url 'words_delete' word.id %}" class="btn span">Delete</a>
+          </div>
         </div>
     </div>
 </div>
@@ -27,23 +31,22 @@
 <div class="card">
     <div class="card-inner">
         <div class="card-front span">
-            <h4>Español: {{ palabra.español }}</h4>
+            <h4>Español: {{palabra.español}}</h4>
         </div>
         <div class="card-back eng">
-            <h4>Español: {{ palabra.español }}</h4>
-            <h4>Inglés: {{ palabra.inglés }}</h4>
+            <h4>Español: {{palabra.español}}</h4>
+            <h4>Inglés: {{palabra.inglés}}</h4>
           {% if palabra.cognadas %}  
-            <p>Cognadas: {{ palabra.cognadas }}</p>
+            <p>Cognadas: {{palabra.cognadas}}</p>
           {% endif %}
           {% if palabra.antónimos %}
-            <p>Antónimos: {{ palabra.antónimos }}</p>
+            <p>Antónimos: {{palabra.antónimos}}</p>
           {% endif %}
-          <div>
+          <div class="buttons">
             <a href="{% url 'palabras_update' palabra.id %}" class="btn eng">Edit</a>
             <a href="{% url 'palabras_delete' palabra.id %}" class="btn eng">Delete</a>
           </div>
         </div>
-
     </div>
 </div>
 {% endfor %}

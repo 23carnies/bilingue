@@ -6,7 +6,7 @@
   {% else %}
     <h1>Poner Media</h1>
   {% endif %}
-  <form action="" method="post" class="span">
+  <form action="" method="POST" class="span">
     {% csrf_token %}
     <table>
       {{ form.as_p }}

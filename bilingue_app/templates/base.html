@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bilingüe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Cinzel:wght@700&display=swap" rel="stylesheet">    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script defer src="{% static 'js/main.js' %}"></script>
 </head>
 <body>
@@ -21,7 +20,7 @@
               <img src={{user.avatar}} alt="User"Avatar width="40" class="nav-avatar">
               {% endif %}
               </li>
-              <li><a tabindex="0"><i class="fas fa-bars"></i></a>
+              <li><a tabindex="0"><i class="fas fa-chevron-circle-down 7x"></i></i></a>
                 <ul>
                   <li><a href="{% url 'vocabulary' %}">Vocabulary</a></li>
                   <li><a href="{% url 'media_index' %}">Media</a></li>

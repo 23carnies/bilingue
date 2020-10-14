@@ -9,12 +9,8 @@
     <a href="{% url 'palabra_create' %}" class="add span">Poner palabra en español</a>
     <a href="{% url 'chistes_create' %}" class="add eng">Poner un Chiste</a>
     <a href="{% url 'media_create' %}" class="add span">Poner Media</a>
-    <div id="todo-flex">
-        <h4>Today, did you: </h4>
-        <form action="" method="POST"></form>
-    </div>
+    <a href="https://open.spotify.com/playlist/0hZlif7uDeuDQpJr5cyXXN" class="add eng"><i class="fab fa-spotify"></i> Música</a>
 
-    <a href="{% url 'user_detail' user.id %}" class="add span">Take this out User Home</a>
 </div>
 {% else %}
 <img src="{% static 'images/logo.png' %}" alt="bilingüe logo" id="lg-logo">

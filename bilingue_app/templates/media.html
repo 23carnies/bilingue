@@ -1,23 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="media-add"><a href="{% url 'media_create' %}" class="add span">Poner Media</a></div>
+<div class="media-card-container">
 {% for media in medias %}
 <div class="media-card">
   {% if media.picture %}  
-    <img src="{{media.picture}}" alt="Avatar">
+    <img src="{{media.picture}}" alt="Avatar" width="200">
   {% else %}
     <img src="https://picsum.photos/200" alt="Random picture">
   {% endif %}
-    <div class="container">
+    <div class="bottom-container">
       <h4><b>{{media.name}}</b></h4>
     {% if media.year %}
       <p>{{media.year}}</p>
       {% endif %}
       <p>{{media.get_media_type_display}}</p>
+      {% if user.id == media.user.id %}
       <a href="{% url 'media_update' media.id %}" class="btn edit-btn">Edit</a>
       <a href="{% url 'media_delete' media.id %}" class="btn del-btn">Delete</a>
+      {%endif%}
     </div>
   </div>
 {% endfor %}
- 
+</div>
+
 {% endblock %}

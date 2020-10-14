@@ -72,8 +72,10 @@ class Photo(models.Model):
 
 class Media(models.Model):
     name = models.CharField(max_length=250)
-    year = models.CharField(max_length=4, blank=True)
-    picture = models.FileField(blank=True)
+    year = models.CharField(max_length=4, blank=True, 
+        help_text= "2005")
+    picture = models.CharField(max_length=250, blank=True,
+        help_text= "http link")
     media_type = models.CharField(
         max_length=1,
         choices=MEDIA_TYPES,
@@ -86,20 +88,27 @@ class Media(models.Model):
         return reverse('media')
 
 class Chiste(models.Model):
-    título = models.CharField(max_length=100)
-    foto = models.CharField(
-        max_length=200,
-        blank=True
-    )
+    título = models.CharField(max_length=100,
+        help_text= "Title")
     configuración = models.CharField(
         max_length=500,
-        blank=True
+        blank=True,
+        help_text= "Setup in Spanish"
     )
     remate = models.CharField(
         max_length=200,
+        blank=True,
+        help_text= "Punchline in Spanish"
+    )
+    set_up = models.CharField(
+        max_length=500,
         blank=True
     )
-    photos = models.ManyToManyField(Photo)
+    punchline = models.CharField(
+        max_length=200,
+        blank=True
+    )
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     def __str__(self):
         return self.título  
     def get_absolute_url(self):
