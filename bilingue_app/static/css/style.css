@@ -325,14 +325,22 @@ label{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     box-shadow: 1px 3px #5832fd,
                 -1px 3px #5832fd;
     margin: 15px;
 }
 .social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
     max-width: 300px;
     color: #02eef4;
-    flex-flow: row wrap;
+    margin: 10px;
+}
+.social > img {
+    max-width: 250px;
 }
 
 
