@@ -2,24 +2,27 @@
 {% block content %}
 
 
-<div class="media-card">
+<div class="profile-card">
   {% if user.avatar %}  
-    <img src="{{user.avatar}}" alt="Avatar">
+    <img src="{{user.avatar}}" alt="Avatar" class="profile-avatar">
   {% else %}
     <img src="https://picsum.photos/200" alt="Random picture">
   {% endif %}
     <div class="container">
-      <h4><b>{{user.first_name}}</b></h4>
+      <h4>Native Language: {{user.first_name}}</h4>
         <p>{{user.native_language}}</p>
      
       <p>{{user.bio}}</p>
-       <a href="{% url 'user_update' user.id %}" class="btn edit-btn">Edit</a>
-      <a href="{% url 'user_delete' user.id %}" class="btn del-btn">Delete</a>
+      <div class="buttons">
+        <a href="{% url 'user_update' user.id %}" class="btn span">Edit</a>
+        <a href="{% url 'user_delete' user.id %}" class="btn span">Delete</a>
+      </div>
       <form action="{% url 'user_photo' user.id %}" enctype="multipart/form-data" method="POST" class="eng">
       {% csrf_token %}
+      <p>Change profile picture<p>
       <input type="file" name="photo-file">
       <br><br>
-      <input type="submit" class="btn" value="Upload Photo">
+      <input type="submit" class="btn span" value="Upload Photo">
     </form>
     </div>
   </div>

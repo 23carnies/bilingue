@@ -14,6 +14,6 @@ class UserUpdateForm(UserChangeForm):
     
     class Meta:
         model = User
-        fields = ('username', 'email', 'avatar', 'native_language')
+        fields = ('username', 'email', 'avatar', 'bio', 'native_language')
 
         

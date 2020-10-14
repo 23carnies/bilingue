@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>Flashcards</h2>
+<h1>Flashcards</h1>
+<div class="addWords">
+  <a href="{% url 'palabra_create' %}" class="add span">Poner palabra en español</a>
+  <a href="{% url 'word_create' %}" class="add eng">Add Word</a>
+</div>
 
+<div class="media-card-container">
 {% for word in words %}
 <div class="card">
     <div class="card-inner">
@@ -18,7 +23,7 @@
           {% if word.antonyms %}
             <p>Antonyms: {{ word.antonyms }}</p>
           {% endif %}
-          <div class="buttons>
+          <div class="buttons">
             <a href="{% url 'words_update' word.id %}" class="btn span">Edit</a>
             <a href="{% url 'words_delete' word.id %}" class="btn span">Delete</a>
           </div>
@@ -50,5 +55,6 @@
     </div>
 </div>
 {% endfor %}
+</div>
 
 {% endblock %}
