@@ -312,6 +312,13 @@ form {
     padding: 2%;
     border-radius: 8px;
 }
+.login-form {
+    color: #02eef4;
+    max-width: 80%;
+}
+.login-form > input:not(.btn) {
+    border-radius: 8px;
+}
 input:not(.btn) {
     margin: 1%;
     border: 1px double rgb(88, 50, 253);

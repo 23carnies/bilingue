@@ -4,10 +4,10 @@
 <h1>Sign Up</h1>
 
 <!-- Add the signup form -->
-<form method="post" action="{% url 'signup' %}">
+<form method="post" action="{% url 'signup' %}" class="login-form">
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" class="btn edit-btn" value="signup">
+  <input type="submit" class="btn span" value="signup">
 </form>
 
 {% endblock %}
