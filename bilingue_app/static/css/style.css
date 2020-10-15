@@ -22,6 +22,7 @@ nav {
 nav ul {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0;
@@ -155,10 +156,10 @@ p {
 }
 .about > p {
     color: rgb(180, 177, 177);
-    text-align: left;
+    text-align: center;
 }
 .about > h4 {
-    text-align: left;
+    text-align: center;
     color: rgb(180, 177, 177);
     font-weight: 700;
 }
@@ -305,7 +306,6 @@ p {
 }
 
 /* Forms */
-
 form {
     max-width: 80%;
     margin: 0 auto;

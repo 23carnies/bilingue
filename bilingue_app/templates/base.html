@@ -20,8 +20,9 @@
               <img src={{user.avatar}} alt="User"Avatar width="40" class="nav-avatar">
               {% endif %}
               </li>
-              <li><a tabindex="0"><i class="fas fa-chevron-circle-down 7x"></i></i></a>
+              <li><a>Menu</a>
                 <ul>
+                  <li><a href="{% url 'home' %}">Home</a></li>
                   <li><a href="{% url 'vocabulary' %}">Vocabulary</a></li>
                   <li><a href="{% url 'media_index' %}">Media</a></li>
                   <li><a href="{% url 'chistes_index' %}">Chistes</a></li>
