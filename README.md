@@ -57,11 +57,11 @@ I majored in Spanish in college. I worked with several Spanish speakers and was 
 
 ### Screenshots
 
-![Chistes](bilingue/bilingue_app/static/images/chistes.png)
+![Chistes](bilingue/staticfiles/images/chistes.png)
 
-![Media](bilingue/bilingue_app/static/images/media.png)
+![Media](bilingue/staticfiles/images/media.png)
 
-![Vocabulary](bilingue/bilingue_app/static/images/vocabulary.png)
+![Vocabulary](bilingue/staticfiles/images/vocabulary.png)
 
 ---------------
 
