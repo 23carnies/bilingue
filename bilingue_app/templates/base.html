@@ -16,9 +16,9 @@
             <ul class="menu">
               <li class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo" width="60px"></a></li>
             {% if user.is_authenticated %}  
-              <li id="hi">Hi, {{user.username}} 
+              <li id="hi"><a href="{% url 'user_detail' user.id %}">Hi, {{user.username}} 
               {% if user.avatar %}
-              <img src={{user.avatar}} alt="User"Avatar width="40" class="nav-avatar">
+              <img src={{user.avatar}} alt="User"Avatar width="40" class="nav-avatar"></a>
               {% endif %}
               </li>
               <li><a>Menu</a>
