@@ -42,11 +42,11 @@ I majored in Spanish in college. I worked with several Spanish speakers and was 
 -----------------
 
 ### ERD/Wireframes
-![ERD](./bilingue/bilingue_app/static/images/bilingüeERD.jpg)
+![ERD](bilingue/bilingue_app/static/images/bilingüeERD.jpg)
 
 -------------
 
-![Wireframes](/bilingue/bilingue_app/static/images/bilingüe.png)
+![Wireframes](bilingue/bilingue_app/static/images/bilingüe.png)
 
 -------------
 
@@ -57,11 +57,11 @@ I majored in Spanish in college. I worked with several Spanish speakers and was 
 
 ### Screenshots
 
-![Chistes](/bilingue/bilingue_app/static/images/chistes.png)
+![Chistes](bilingue/bilingue_app/static/images/chistes.png)
 
-![Media](/bilingue/bilingue_app/static/images/media.png)
+![Media](bilingue/bilingue_app/static/images/media.png)
 
-![Vocabulary](/bilingue/bilingue_app/static/images/vocabulary.png)
+![Vocabulary](bilingue/bilingue_app/static/images/vocabulary.png)
 
 ---------------
 
