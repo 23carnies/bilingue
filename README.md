@@ -1,7 +1,7 @@
 # bilingüe
 [Open bilingüe](https://bilingue-skills.herokuapp.com/)
 
-![](./bilingue_app/static/images/logo.png)
+![bilingüe](./bilingue_app/static/images/logo.png)
 
 ## Contents
 * Objective
@@ -54,6 +54,7 @@ I majored in Spanish in college. I worked with several Spanish speakers and was 
 
 ### Trello Board
 [See Trello Board for bilingüe](https://trello.com/b/tH8x7cjf/biling%C3%BCe)
+![Trello](./bilingue_app/static/images/trello.png)
 
 --------------------
 
